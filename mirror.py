@@ -35,8 +35,8 @@ class myFTP:
 	depth = 0
 
     #
-    # method analizing response code from server and return false 
-    # if server send error code
+    # method analyzing response code from the server and returns false 
+    # if server returns error code
     #
 	def analizeServerResp(self, tm):
 		retVal = ErrorCode.NO_ERROR
