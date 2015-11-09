@@ -1,5 +1,5 @@
 #author Dawid Lubczynski
-#client FTP supports only passive mode
+#client FTP supporting only passive mode
 
 from socket import *
 from string import *
@@ -22,15 +22,15 @@ class isFolder:
 #FTP class
 #
 class myFTP:
-	sock = socket()          #socket for transmission commands
+	sock = socket()          #socket for trasmision commands
 	sockData = socket()      #socket for trasmission data
-	socketNoBlock = socket() #variable for non blocking connection
-	IPdata = ''              #IP got from server
+	socketNoBlock = socket() #socket for non blocking text receive
+	IPdata = ''              #IP gets from server
 	bufforSize = 4096        #bufor size
 	port = 21                #FTP default port
 	portData = 0            
 	filesCount = 1
-	filenames = []           #Files names in current directory
+	filenames = []           #File names in current directory
 	folderlist = []          #Folders names in current directory
 	depth = 0
 
@@ -168,7 +168,7 @@ class myFTP:
 		loginCommand = 'USER ' + login + '\r\n'
 		passwCommand = 'PASS ' + password + '\r\n'
 
-		self.sock = socket(AF_INET, SOCK_STREAM)  
+		self.sock = socket(AF_INET, SOCK_STREAM)  # utworzenie gniazda
 		self.sock.connect((server, self.port))
 		tm = self.sock.recv(self.bufforSize)
 		self.analizeServerResp(tm)
@@ -195,7 +195,7 @@ class myFTP:
 		return 1
 
     #
-    # passive mode request
+    # request servet for passive mode
     #
 	def ftpPassive(self):
 		time.sleep(0.2)
@@ -229,7 +229,7 @@ class myFTP:
 		return 1
     
     #
-    # method returns current directory path
+    # method returns corrent directory path
     #
 	def returnDirectory(self):
 		self.sock.send('PWD\r\n')
@@ -251,7 +251,7 @@ class myFTP:
 		return ret
 		
     #
-    # method does the same thing as cd ..
+    # method does the same think as cd ..
     #
 	def goToDirectoryUp(self):
 		self.sock.send('CDUP' + '\r\n')
@@ -334,7 +334,7 @@ class myFTP:
 			i += 1
 
     #
-    # download all files recursive beginning from current directory
+    # download all files recursive begining current directory
     #
 	def downloadAllFilesReq(self, serverPath, localPath, a_depth=10000):
 
