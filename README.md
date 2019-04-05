@@ -1,1 +1,1 @@
-This is very simple FTP client which supports only passive mode at this moment.
+Simple FTP client with support for passive mode. A project within a course of studies.
